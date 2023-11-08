@@ -26,6 +26,16 @@ it('should return 0 for a game of all zero',()=>{
         rollMany(0,17);
         expect(game.score).toBe(14);
     })
+    it('Shoud return the correct score when a strik and 1,1,4,3 scors are gains',()=>{
+        game.roll(10);
+        game.roll(1);
+        game.roll(1);
+        game.roll(4);
+        game.roll(3);
+
+        rollMany(0,15);
+        expect(game.score).toBe(21);
+    })
 
         
     function rollMany(pins: number,rolls:number){
