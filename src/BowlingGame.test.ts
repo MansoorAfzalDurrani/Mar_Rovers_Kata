@@ -24,8 +24,7 @@ it('should return 0 for a game of all zero',()=>{
     function rollMany(pins: number,rolls:number){
         for (let i=0; i<rolls; i++){
             game.roll(pins);
-        }
-       
+        }    
     }
         
     

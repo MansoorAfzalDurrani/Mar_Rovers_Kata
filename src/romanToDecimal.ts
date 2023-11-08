@@ -8,7 +8,7 @@ export function romanToDecimal(romanNo : string) : number {
    {
       const currentChar=romanNo[i];
       const currentValue =romanNoObj[currentChar];
-      console.log(' i is ' + i+ '  currentChar   '+ currentChar);
+      //console.log(' i is ' + i+ '  currentChar   '+ currentChar);
       if(currentValue<previousValue){
           result = result-currentValue;
       }else{

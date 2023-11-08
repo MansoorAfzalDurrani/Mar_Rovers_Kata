@@ -14,17 +14,22 @@
     let score = 0;
     let rollIndex =0;
     for (let frameIndex=0; frameIndex<10; frameIndex++){
-        const framScore =this.rolls[rollIndex] + this.rolls[rollIndex+1];
-        if(framScore === 10){
-         score +=10 + this.rolls[rollIndex+2];
+        const frameScore =this.rolls[rollIndex] + this.rolls[rollIndex+1];
+        if(this.isSpare(frameScore)){
+         score +=this.spareBonus(rollIndex)
          rollIndex +=2;
         }else{
-        score += framScore ;
+        score += frameScore ;
         rollIndex += 2;
         }
-        
-        }   
+      }   
         return score;
+    }
+    isSpare(frameScore: number){
+        return frameScore === 10;
+    }
+    spareBonus(rollIndex: number){
+       return 10 + this.rolls[rollIndex+2];
     }
  }
  module.exports=BowlingGame;
