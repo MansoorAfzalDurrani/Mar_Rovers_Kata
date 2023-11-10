@@ -1,8 +1,6 @@
-import { turnleft } from "./MarsRoversKata";
-//const turnleft = (x)=> "W";
-describe("Turning A Rover", () => {
-    test("When Facing N, turning left should cause us to face W", () => {
-      expect(turnleft("N")).toBe("W");
-    });
-  });
-  
+//import { add } from './calc';
+
+//console.log(`2 plus 2 is ${add(2, 2)}`);
+//import {romanToDecimal } from './romanToDecimal';
+//romanToDecimal('I');
+import { BowlingGame } from './BowlingGame';
