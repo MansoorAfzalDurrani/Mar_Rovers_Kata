@@ -18,16 +18,16 @@ describe("Turning A Rover", () => {
 });
 
 describe("Turning A Rover", () => {
-  test("When Facing N, turning Righ should cause us to face W", () => {
+  test("When Facing N, turning Ritgh should cause us to face W", () => {
     expect(turnRight("N")).toBe("E");
   });
-  test("When Facing W, turning Righ should cause us to face S", () => {
+  test("When Facing W, turning Ritgh should cause us to face S", () => {
     expect(turnRight("E")).toBe("S");
   });
-  test("When Facing W, turning Right should cause us to face S", () => {
+  test("When Facing W, turning Ritght should cause us to face S", () => {
     expect(turnRight("S")).toBe("W");
   });
-  test("When Facing S, turning Right should cause us to face E", () => {
+  test("When Facing S, turning Ritght should cause us to face E", () => {
     expect(turnRight("W")).toBe("N");
   });
 
