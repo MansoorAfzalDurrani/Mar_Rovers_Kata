@@ -1,7 +1,8 @@
 import {turnRight, turnleft } from "./MarsRoversKata";
+import{move} from "./MarsRoversKata";
 
 
-describe("Turning A Rover", () => {
+describe("Turning A Rover left", () => {
   test("When Facing N, turning left should cause us to face W", () => {
     expect(turnleft("N")).toBe("W");
   });
@@ -17,7 +18,7 @@ describe("Turning A Rover", () => {
 
 });
 
-describe("Turning A Rover", () => {
+describe("Turning A Rover right", () => {
   test("When Facing N, turning Ritgh should cause us to face W", () => {
     expect(turnRight("N")).toBe("E");
   });
@@ -31,6 +32,26 @@ describe("Turning A Rover", () => {
     expect(turnRight("W")).toBe("N");
   });
 
+});
+describe("For Moving Rover North", () => {
+  test("When Moving N, We Should Increment the Y cordinate", () => {
+    expect(move("N",[1,1])).toEqual([[1,2]]);
+  });
+});
+describe("For Moving Rover East", () => {
+  test("When Moving E, We Should Increment the X cordinate", () => {
+    expect(move("E",[1,1])).toEqual([[2,1]]);
+  });
+});
+describe("For Moving Rover South", () => {
+  test("When Moving S, We Should Decrement the Y cordinate", () => {
+    expect(move("S",[1,1])).toEqual([[1,0]]);
+  });
+});
+describe("For Moving Rover West", () => {
+  test("When Moving W, We Should Decrement the X cordinate", () => {
+    expect(move("W",[1,1])).toEqual([[0,1]]);
+  });
 });
 
 
