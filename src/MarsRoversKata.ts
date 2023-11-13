@@ -2,6 +2,7 @@ type Heading = "N"|"W"|"S"|"E";
 type Coordinates =[x:number, y:number];
 const Compass: Array<Heading>= ["N","E","S","W"]
 
+
 export function turnleft(Heading: Heading):string{
  const idx = Compass.indexOf(Heading);
  return Compass[(idx+3)%4];
@@ -13,6 +14,7 @@ export function turnleft(Heading: Heading):string{
    return Compass[(idx+1)%4];
    
   }
+
  export function move(Heading: Heading, posittion: Coordinates) : Array<[number,number]> | undefined {
   const [x,y]=posittion;
   if (Heading === "N") {
