@@ -1,39 +1,39 @@
 import {turnRight, turnleft } from "./MarsRoversKata";
 import{move} from "./MarsRoversKata";
 
-const  execute =(command:string , state: { heading: any; position?: number[]; })=>({
-  ...state, 
-  heading: turnleft(state.heading),
-});
+type Heading = "N"|"W"|"S"|"E";
+type Coordinates =[x:number, y:number];
 
-
-
+type Rover={
+  heading: Heading,
+  position: Coordinates
+}
+//state: { heading: any; position?: number[]; }
+const  execute =(command:string , state: Rover)=>{
+  if(command === "L") return{ ...state, heading: turnleft(state.heading),};
+  if(command === "R") return { ...state, heading: turnRight(state.heading),};
+};
 test.each`
-  original | expected 
-  ${"N"}   | ${"W"}
-  ${"W"}   | ${"S"}
-  ${"S"}   | ${"E"}
-  ${"E"}   | ${"N"}
+  original | expected | direction
+  ${"N"}   | ${"W"}   | ${"L"}
+  ${"W"}   | ${"S"}   | ${"L"}
+  ${"S"}   | ${"E"}   | ${"L"}
+  ${"E"}   | ${"N"}   | ${"L"}
+
+  ${"N"}   | ${"E"}   | ${"R"}
+  ${"E"}   | ${"S"}   | ${"R"}
+  ${"S"}   | ${"W"}   | ${"R"}
+  ${"W"}   | ${"N"}   | ${"R"}
 `(
-  "when facing $original, turning left should cause us to face $expected", 
-({ original, expected }) => {
-  const initialState = { heading: original, position : [1,1]};
-  expect(execute("L", initialState)).toEqual({
+  "when facing $original, turning $direction should cause us to face $expected", 
+({ original, expected, direction }) => {
+  const initialState = { heading: original, position : [1,1] as Coordinates};
+  expect(execute(direction, initialState)).toEqual({
     ...initialState,
     heading: expected,
   });
 }
 );
-
-test.each`
-  original | expected 
-  ${"N"}   | ${"E"}
-  ${"E"}   | ${"S"}
-  ${"S"}   | ${"W"}
-  ${"W"}   | ${"N"}
-`("when facing $original, turning right should cause us to face $expected", ({ original, expected }) => {
-  expect(turnRight(original)).toBe(expected);
-});
 
 describe("For Moving Rover North", () => {
   test("When Moving N, We Should Increment the Y cordinate", () => {
@@ -57,6 +57,34 @@ describe("For Moving Rover West", () => {
 });
 
 
+/* test.each`
+  original | expected 
+  ${"N"}   | ${"E"}
+  ${"E"}   | ${"S"}
+  ${"S"}   | ${"W"}
+  ${"W"}   | ${"N"}
+`(
+  "when facing $original, turning right should cause us to face $expected",
+   ({ original, expected }) => {
+ const initialState={heading:original, position:[1,1] as Coordinates};
+  expect(execute("R",initialState)).toEqual({
+    ...initialState,
+    heading: expected,
+  });
+});
+*/
+
+/*
+test.each`
+  original | expected 
+  ${"N"}   | ${"E"}
+  ${"E"}   | ${"S"}
+  ${"S"}   | ${"W"}
+  ${"W"}   | ${"N"}
+`("when facing $original, turning right should cause us to face $expected", ({ original, expected }) => {
+  expect(turnRight(original)).toBe(expected);
+});
+*/
 
 /*
 describe("Turning A Rover right", () => {
@@ -73,6 +101,18 @@ describe("Turning A Rover right", () => {
     expect(turnRight("W")).toBe("N");
   });
 
+});
+*/
+
+/* //turn left coding
+test.each`
+  original | expected 
+  ${"N"}   | ${"W"}
+  ${"W"}   | ${"S"}
+  ${"S"}   | ${"E"}
+  ${"E"}   | ${"N"}
+`("when facing $original, turning left should cause us to face $expected", ({ original, expected }) => {
+  expect(turnleft(original)).toBe(expected);
 });
 */
 
