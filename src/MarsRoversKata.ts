@@ -15,19 +15,19 @@ export function turnleft(Heading: Heading):string{
    
   }
 
- export function move(Heading: Heading, posittion: Coordinates) : Array<[number,number]> | undefined {
+ export function move(Heading: Heading, posittion: Coordinates) : Coordinates | undefined {
   const [x,y]=posittion;
   if (Heading === "N") {
-   return [[x, y + 1]];
+   return [x, y + 1];
  } 
   if (Heading === "E") {
-   return [[x + 1, y]];
+   return [x + 1, y];
   }
  if (Heading === "S") {
-      return [[x , y-1]];
+      return [x , y-1];
  }
  if (Heading === "W") {
-   return [[x -1, y]];
+   return [x -1, y];
  }
 }
 

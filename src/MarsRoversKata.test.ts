@@ -8,10 +8,10 @@ type Rover={
   heading: Heading,
   position: Coordinates
 }
-//state: { heading: any; position?: number[]; }
 const  execute =(command:string , state: Rover)=>{
   if(command === "L") return{ ...state, heading: turnleft(state.heading),};
   if(command === "R") return { ...state, heading: turnRight(state.heading),};
+  if(command === "M") return { ...state, position: move(state.heading, state.position)};
 };
 test.each`
   original | expected | direction
@@ -37,22 +37,41 @@ test.each`
 
 describe("For Moving Rover North", () => {
   test("When Moving N, We Should Increment the Y cordinate", () => {
-    expect(move("N",[1,1])).toEqual([[1,2]]);
+    const initialState :Rover = { heading: "N", position : [1,1] as Coordinates};
+    expect(execute("M", initialState)).toEqual({
+      ...initialState,
+      position: [1,2],
+    });    
   });
 });
-describe("For Moving Rover East", () => {
-  test("When Moving E, We Should Increment the X cordinate", () => {
-    expect(move("E",[1,1])).toEqual([[2,1]]);
+
+describe("For Moving Rover North", () => {
+  test("When Moving N, We Should Increment the Y cordinate", () => {
+    const initialState :Rover = { heading: "E", position : [1,1] as Coordinates};
+    expect(execute("M", initialState)).toEqual({
+      ...initialState,
+      position: [2,1],
+    });    
   });
 });
-describe("For Moving Rover South", () => {
-  test("When Moving S, We Should Decrement the Y cordinate", () => {
-    expect(move("S",[1,1])).toEqual([[1,0]]);
+
+describe("For Moving Rover North", () => {
+  test("When Moving N, We Should Increment the Y cordinate", () => {
+    const initialState :Rover = { heading: "S", position : [1,1] as Coordinates};
+    expect(execute("M", initialState)).toEqual({
+      ...initialState,
+      position: [1,0],
+    });    
   });
 });
-describe("For Moving Rover West", () => {
-  test("When Moving W, We Should Decrement the X cordinate", () => {
-    expect(move("W",[1,1])).toEqual([[0,1]]);
+
+describe("For Moving Rover North", () => {
+  test("When Moving N, We Should Increment the Y cordinate", () => {
+    const initialState :Rover = { heading: "W", position : [1,1] as Coordinates};
+    expect(execute("M", initialState)).toEqual({
+      ...initialState,
+      position: [0,1],
+    });    
   });
 });
 
@@ -132,3 +151,11 @@ describe("Turning A Rover left", () => {
   });
 });
 */
+/*
+describe("For Moving Rover North", () => {
+  test("When Moving N, We Should Increment the Y cordinate", () => {
+    expect(move("N",[1,1])).toEqual([1,2]);
+  });
+});
+*/
+
